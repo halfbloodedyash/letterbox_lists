@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterbox Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Letterbox<span class="accent">_pro</span></h1>
+                <p class="tagline">For Cinephiles, By Cinephiles</p>
+            </div>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h2>Export Letterboxd Lists with Ease</h2>
+                <p class="subtitle">The essential tool for cinephiles to extract and manage their Letterboxd movie lists</p>
+                <div class="film-strip"></div>
+            </section>
+            
+            <section class="extract-panel">
+                <h3><span class="accent-number">01</span> Extract Movies from Letterboxd</h3>
+                <form method="POST" action="/" class="input-group">
+                    <input type="text" name="url" placeholder="https://letterboxd.com/user/list/top-100-movies/" required>
+                    <button type="submit" class="primary-btn">Scrape Movies</button>
+                </form>
+                
+                {% if error %}
+                <div class="alert error">
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
+                
+                {% if download_link %}
+                <div class="alert success">
+                    <p>Movies extracted successfully!</p>
+                    <a href="{{ url_for('download') }}" class="download-btn">Download CSV</a>
+                </div>
+                {% endif %}
+            </section>
+            
+            <section class="pro-feature-panel">
+                <h3><span class="accent-number">02</span> Pro Feature for Free: CSV Upload to Letterboxd</h3>
+                <div class="feature-content">
+                    <div class="feature-icon">📊</div>
+                    <p>Letterboxd Pro users: Our generated CSV file is formatted for direct upload to Letterboxd. With a Pro account, you can import this CSV into your watchlist or custom lists, saving time and eliminating manual data entry.</p>
+                </div>
+            </section>
+            
+            <section class="how-it-works-panel">
+                <h3><span class="accent-number">03</span> How It Works</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Input a List URL</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Download CSV</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Upload to Letterboxd</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="why-use-panel">
+                <h3><span class="accent-number">04</span> Why Use Letterbox_pro?</h3>
+                <div class="benefits">
+                    <div class="benefit"><span class="check">✓</span> Time-saving Automation</div>
+                    <div class="benefit"><span class="check">✓</span> Works With Any Public List</div>
+                    <div class="benefit"><span class="check">✓</span> Properly Formatted CSV</div>
+                    <div class="benefit"><span class="check">✓</span> Cinephile-friendly Design</div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Letterbox_pro. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
